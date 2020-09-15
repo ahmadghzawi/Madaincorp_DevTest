@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="main.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>This is Rock, Paper, and Scissors</h3>
+    <img
+      id="rock"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSEwoceLbfQuBQhRvMSgHhxkPuSi9qj_p-tbw&usqp=CAU"
+      title="Rock"
+      alt="Rock"
+      onclick="chooseMethod('rock')"
+    />
+    <img
+      id="paper"
+      src="https://i.pinimg.com/originals/c3/8a/9e/c38a9e4d67f7797c7613a33f7f41ef68.png"
+      title="Paper"
+      alt="Paper"
+      onclick="chooseMethod('paper')"
+    />
+    <img
+      id="scissors"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSOKJuwxHZqnQfmH6lJxI4qzux0ERHNKMDpkw&usqp=CAU"
+      title="Scissors"
+      alt="Scissors"
+      onclick="chooseMethod('scissors')"
+    />
+
+    <button id="play-btn" onclick="play()">Play</button>
+    <button id="retry-btn" onclick="retry()">Retry</button>
+
+    <p id='player-choice'></p>
+    <p id='computer-choice'></p>
+    <p id="result"></p>
+  </body>
+</html>

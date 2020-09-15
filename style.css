@@ -1,0 +1,12 @@
+img {
+  border: 3px solid black;
+  width: 150px;
+}
+
+button {
+  visibility: hidden;
+}
+
+p {
+  visibility: hidden;
+}
