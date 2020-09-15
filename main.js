@@ -39,11 +39,18 @@ const play = () => {
   document.getElementById("play-btn").style.visibility = "hidden";
   document.getElementById("retry-btn").style.visibility = "visible";
 
-  if (strengthDeterminant[playerSelectedMethod] === computerSelectedMethod)
+  if (strengthDeterminant[playerSelectedMethod] === computerSelectedMethod) {
+    document.getElementById("result").style.color = "red";
     result = "Computer wins";
-  else if (strengthDeterminant[computerSelectedMethod] === playerSelectedMethod)
+  } else if (
+    strengthDeterminant[computerSelectedMethod] === playerSelectedMethod
+  ) {
+    document.getElementById("result").style.color = "green";
     result = "You WIN!";
-  else result = "It is a draw";
+  } else {
+    document.getElementById("result").style.color = "black";
+    result = "It is a draw";
+  }
 
   document.getElementById("computer-choice").innerHTML =
     "Computer chose " + computerSelectedMethod.toUpperCase();
