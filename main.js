@@ -1,73 +1,70 @@
 let playerSelectedMethod = "";
 let computerSelectedMethod = "";
 
+let methods = ["rock", "paper", "scissors"];
 let strengthDeterminant = {
   rock: "paper",
   paper: "scissors",
   scissors: "rock",
 };
-let methods = Object.values(strengthDeterminant);
 
-let result = "";
+const setElementProperties = (elements, attributes, value) => {
+  switch (attributes.length) {
+    case 2:
+      elements.forEach((element) => (document.getElementById(element)[attributes[0]][attributes[1]] = value));
+      break;
+
+    case 1:
+    default:
+      elements.forEach((element) => (document.getElementById(element)[attributes[0]] = value));
+  }
+};
+
+const determineResult = () => {
+  if (strengthDeterminant[playerSelectedMethod] === computerSelectedMethod) {
+    setElementProperties(["result"], ["style", "color"], "red");
+    return "Computer wins";
+  }
+
+  if (strengthDeterminant[computerSelectedMethod] === playerSelectedMethod) {
+    setElementProperties(["result"], ["style", "color"], "green");
+    return "You WIN!";
+  }
+
+  setElementProperties(["result"], ["style", "color"], "black");
+  return "It is a draw";
+};
 
 const chooseMethod = (selectedMethod) => {
   playerSelectedMethod = selectedMethod;
   let filteredMethods = methods.filter((method) => method !== selectedMethod);
 
-  document.getElementById(selectedMethod).style.borderColor = "green";
-  filteredMethods.forEach((method) => {
-    document.getElementById(method).style.borderColor = "black";
-  });
-
-  document.getElementById("result").style.visibility = "hidden";
-  document.getElementById("computer-choice").style.visibility = "hidden";
-  document.getElementById("retry-btn").style.visibility = "hidden";
-  document.getElementById("player-choice").style.visibility = "visible";
-  document.getElementById("play-btn").style.visibility = "visible";
-
-  document.getElementById("player-choice").innerHTML =
-    "You chose " + playerSelectedMethod.toUpperCase();
+  setElementProperties([selectedMethod], ["style", "borderColor"], "green");
+  setElementProperties(filteredMethods, ["style", "borderColor"], "black");
+  setElementProperties(["result", "computer-choice"], ["style", "visibility"], "hidden");
+  setElementProperties(["player-choice"], ["style", "visibility"], "visible");
+  setElementProperties(["retry-btn"], ["disabled"], true);
+  setElementProperties(["play-btn"], ["disabled"], false);
+  setElementProperties(["player-choice"], ["innerHTML"], "You chose " + playerSelectedMethod.toUpperCase());
 };
 
 const play = () => {
   computerSelectedMethod = methods[Math.floor(Math.random() * 3)];
 
-  document.getElementById(computerSelectedMethod).style.borderColor = "red";
-
-  document.getElementById("computer-choice").style.visibility = "visible";
-  document.getElementById("result").style.visibility = "visible";
-  document.getElementById("play-btn").style.visibility = "hidden";
-  document.getElementById("retry-btn").style.visibility = "visible";
-
-  if (strengthDeterminant[playerSelectedMethod] === computerSelectedMethod) {
-    document.getElementById("result").style.color = "red";
-    result = "Computer wins";
-  } else if (
-    strengthDeterminant[computerSelectedMethod] === playerSelectedMethod
-  ) {
-    document.getElementById("result").style.color = "green";
-    result = "You WIN!";
-  } else {
-    document.getElementById("result").style.color = "black";
-    result = "It is a draw";
-  }
-
-  document.getElementById("computer-choice").innerHTML =
-    "Computer chose " + computerSelectedMethod.toUpperCase();
-
-  document.getElementById("result").innerHTML = result;
+  setElementProperties(["result", "computer-choice"], ["style", "visibility"], "visible");
+  setElementProperties([computerSelectedMethod], ["style", "borderColor"], "red");
+  setElementProperties(["computer-choice"], ["innerHTML"], "Computer chose " + computerSelectedMethod.toUpperCase());
+  setElementProperties(["retry-btn"], ["disabled"], false);
+  setElementProperties(["play-btn"], ["disabled"], true);
+  setElementProperties(["result"], ["innerHTML"], determineResult());
 };
 
 const retry = () => {
-  methods.forEach((method) => {
-    document.getElementById(method).style.borderColor = "black";
-  });
+  setElementProperties(methods, ["style", "borderColor"], "black");
 
   playerSelectedMethod = "";
   computerSelectedMethod = "";
-  document.getElementById("play-btn").style.visibility = "hidden";
-  document.getElementById("retry-btn").style.visibility = "hidden";
-  document.getElementById("player-choice").style.visibility = "hidden";
-  document.getElementById("computer-choice").style.visibility = "hidden";
-  document.getElementById("result").style.visibility = "hidden";
+
+  setElementProperties(["result", "computer-choice", "player-choice"], ["style", "visibility"], "hidden");
+  setElementProperties(["retry-btn", "play-btn"], ["disabled"], true);
 };

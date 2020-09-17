@@ -3,10 +3,10 @@ img {
   width: 150px;
 }
 
-button {
+p {
   visibility: hidden;
 }
 
-p {
-  visibility: hidden;
+#buttons-container {
+  width: 25%;
 }

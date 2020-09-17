@@ -19,39 +19,46 @@
       <h3 class="text-center">Rock | Paper | Scissors</h3>
       <hr/>
       <h6 class="text-center mt-5">Start with clicking on a method...</h3>
-      <div class="d-flex justify-content-between mt-3">
-        <img
-          id="rock"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSEwoceLbfQuBQhRvMSgHhxkPuSi9qj_p-tbw&usqp=CAU"
-          title="Rock"
-          alt="Rock"
-          onclick="chooseMethod('rock')"
-        />
-        <img
-          id="paper"
-          src="https://i.pinimg.com/originals/c3/8a/9e/c38a9e4d67f7797c7613a33f7f41ef68.png"
-          title="Paper"
-          alt="Paper"
-          onclick="chooseMethod('paper')"
-        />
-        <img
+      <div class="d-flex justify-content-around mt-3">
+        <button class="btn" onclick="chooseMethod('rock')">
+          <img
+            id="rock"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSEwoceLbfQuBQhRvMSgHhxkPuSi9qj_p-tbw&usqp=CAU"
+            title="Rock"
+            alt="Rock"
+          />
+        </button>
+
+        <button class="btn" onclick="chooseMethod('paper')">
+          <img
+            id="paper"
+            src="https://i.pinimg.com/originals/c3/8a/9e/c38a9e4d67f7797c7613a33f7f41ef68.png"
+            title="Paper"
+            alt="Paper"
+          />
+        </button>
+
+        <button class="btn" onclick="chooseMethod('scissors')">
+          <img
           id="scissors"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSOKJuwxHZqnQfmH6lJxI4qzux0ERHNKMDpkw&usqp=CAU"
           title="Scissors"
           alt="Scissors"
-          onclick="chooseMethod('scissors')"
-        />
+          />
+        </button>
       </div>
 
       <div class="d-flex flex-column align-items-center mt-3">
-        <p id="player-choice" class='font-weight-bold'></p>
-        <p id="computer-choice"></p>
+        <p id="player-choice" class='font-weight-bold'>&nbsp;</p>
+        <p id="computer-choice">&nbsp;</p>
       </div>
 
-      <div class='d-flex flex-column align-items-center mt-1'>
-          <button id="play-btn" class='btn btn-primary pl-3 pr-3' onclick="play()">Play</button>
-          <button id="retry-btn" class='btn btn-dark pl-3 pr-3' onclick="retry()">Retry</button>
+      <div class="d-flex justify-content-center">
+        <div id="buttons-container" class='d-flex justify-content-around mt-1'>
+          <button id="play-btn" class='btn btn-primary pl-3 pr-3' disabled onclick="play()">Play</button>
+          <button id="retry-btn" class='btn btn-dark pl-3 pr-3' disabled onclick="retry()">Retry</button>
         </div>
+      </div>
 
       
       <h4 id="result" class='text-center mt-4'></h4>
